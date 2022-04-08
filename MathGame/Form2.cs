@@ -24,5 +24,47 @@ namespace MathGame
             comboSpeed.SelectedIndex = 0;
             comboTime.SelectedIndex = 1;
         }
+
+        private void comboOperation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.AutoPopDelay = 0;
+            toolTip1.InitialDelay = 0;
+            toolTip1.ReshowDelay = 0;
+            toolTip1.ShowAlways = true;
+            toolTip1.SetToolTip(this.comboOperation, "You can choose operation type.");
+        }
+
+        private void comboLevel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.AutoPopDelay = 0;
+            toolTip1.InitialDelay = 0;
+            toolTip1.ReshowDelay = 0;
+            toolTip1.ShowAlways = true;
+            toolTip1.SetToolTip(this.comboLevel, "You can choose difficultiy of the game.");
+        }
+
+        private void comboSpeed_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.AutoPopDelay = 0;
+            toolTip1.InitialDelay = 0;
+            toolTip1.ReshowDelay = 0;
+            toolTip1.ShowAlways = true;
+            toolTip1.SetToolTip(this.comboSpeed, "You can choose speed of the game. \n " +
+                "It determines how many seconds later new question will appear.  ");
+        }
+
+        private void comboTime_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.AutoPopDelay = 0;
+            toolTip1.InitialDelay = 0;
+            toolTip1.ReshowDelay = 0;
+            toolTip1.ShowAlways = true;
+            toolTip1.SetToolTip(this.comboTime, "You can choose total time of the game.");
+        }
+
     }
 }
