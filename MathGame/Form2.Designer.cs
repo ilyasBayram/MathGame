@@ -42,7 +42,7 @@
             this.comboTime = new System.Windows.Forms.ComboBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.labelGameTime = new System.Windows.Forms.Label();
-            this.answerLeft = new System.Windows.Forms.Button();
+            this.buttonAnswerLeft = new System.Windows.Forms.Button();
             this.answerRight = new System.Windows.Forms.Button();
             this.labelQuestion = new System.Windows.Forms.Label();
             this.labelQuestionTime = new System.Windows.Forms.Label();
@@ -75,12 +75,12 @@
             this.comboOperation.FormattingEnabled = true;
             this.comboOperation.Items.AddRange(new object[] {
             "Only addition",
-            "Only abstarction",
+            "Only abstraction",
             "Only division",
             "Only multiplication",
-            "Addition  and abstarction",
-            "Division and multipliciation",
-            "All "});
+            "Addition and abstraction",
+            "Division and multiplication",
+            "All"});
             this.comboOperation.Location = new System.Drawing.Point(38, 97);
             this.comboOperation.Name = "comboOperation";
             this.comboOperation.Size = new System.Drawing.Size(267, 33);
@@ -121,7 +121,6 @@
             this.comboSpeed.FormattingEnabled = true;
             this.comboSpeed.Items.AddRange(new object[] {
             "No speed",
-            "1",
             "2",
             "3",
             "4",
@@ -214,15 +213,15 @@
             this.labelGameTime.TabIndex = 7;
             this.labelGameTime.Text = "Game Time";
             // 
-            // answerLeft
+            // buttonAnswerLeft
             // 
-            this.answerLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.answerLeft.Location = new System.Drawing.Point(445, 397);
-            this.answerLeft.Name = "answerLeft";
-            this.answerLeft.Size = new System.Drawing.Size(198, 90);
-            this.answerLeft.TabIndex = 8;
-            this.answerLeft.Text = "36";
-            this.answerLeft.UseVisualStyleBackColor = true;
+            this.buttonAnswerLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonAnswerLeft.Location = new System.Drawing.Point(445, 397);
+            this.buttonAnswerLeft.Name = "buttonAnswerLeft";
+            this.buttonAnswerLeft.Size = new System.Drawing.Size(198, 90);
+            this.buttonAnswerLeft.TabIndex = 8;
+            this.buttonAnswerLeft.Text = "36";
+            this.buttonAnswerLeft.UseVisualStyleBackColor = true;
             // 
             // answerRight
             // 
@@ -239,7 +238,7 @@
             this.labelQuestion.AutoSize = true;
             this.labelQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelQuestion.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelQuestion.Location = new System.Drawing.Point(573, 235);
+            this.labelQuestion.Location = new System.Drawing.Point(583, 235);
             this.labelQuestion.Name = "labelQuestion";
             this.labelQuestion.Size = new System.Drawing.Size(229, 69);
             this.labelQuestion.TabIndex = 10;
@@ -317,6 +316,11 @@
             this.timerGameTime.Interval = 1000;
             this.timerGameTime.Tick += new System.EventHandler(this.timerGameTime_Tick_1);
             // 
+            // timerQuestionTime
+            // 
+            this.timerQuestionTime.Interval = 1000;
+            this.timerQuestionTime.Tick += new System.EventHandler(this.timerQuestionTime_Tick);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -332,7 +336,7 @@
             this.Controls.Add(this.labelQuestionTime);
             this.Controls.Add(this.labelQuestion);
             this.Controls.Add(this.answerRight);
-            this.Controls.Add(this.answerLeft);
+            this.Controls.Add(this.buttonAnswerLeft);
             this.Controls.Add(this.labelGameTime);
             this.Controls.Add(this.groupProperties);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -361,7 +365,7 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.Label labelGameTime;
-        private System.Windows.Forms.Button answerLeft;
+        private System.Windows.Forms.Button buttonAnswerLeft;
         private System.Windows.Forms.Button answerRight;
         private System.Windows.Forms.Label labelQuestion;
         private System.Windows.Forms.Label labelQuestionTime;

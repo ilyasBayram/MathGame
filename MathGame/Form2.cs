@@ -20,8 +20,122 @@ namespace MathGame
         int secondStart = 4;
         int secondGameOneMinute = 61;
         int minuteGameTwoMinute = 1;
-        int secondQuestion = 0;
+        int secondQuestion=6;
         bool startStop = true;
+        Random operationSign = new Random();
+        Random number = new Random();
+
+       
+        public void createOperation()
+        {   
+            int smallNumberOne = number.Next(1, 10);
+            int smallNumberTwo = number.Next(1, 10);
+            int bigNumberOne = number.Next(10, 99);
+            int bigNumberTwo = number.Next(10, 99);
+            string[] signs = { "+", "-", "*", "/" };
+            int signAllNumbers = operationSign.Next(0, 4);
+            int signFirstTwo = operationSign.Next(0, 2);
+            int signLastTwo = operationSign.Next(2, 4);
+            string lastSignAll = signs[signAllNumbers];
+            string lastSignFirstTwo = signs[signFirstTwo];
+            string lastSignLastTwo = signs[signLastTwo];
+
+            if (comboLevel.Text=="Easy")
+            {
+                if (comboOperation.Text == "Only addition")
+                {
+                    labelQuestion.Text = smallNumberOne  + " " + "+" + " " +  smallNumberTwo;
+                }
+                else if (comboOperation.Text == "Only abstraction")
+                { 
+                    labelQuestion.Text = smallNumberOne  + " " + "-" + " " +  smallNumberTwo;
+                }
+                else if (comboOperation.Text == "Only division")
+                {
+                    labelQuestion.Text = smallNumberOne  + " " + "/" + " " +  smallNumberTwo;
+                }
+                else if (comboOperation.Text == "Only multiplication")
+                {
+                    labelQuestion.Text = smallNumberOne  + " " + "X" + " " +  smallNumberTwo;
+                }
+                else if (comboOperation.Text == "Addition and abstraction")
+                {
+                    labelQuestion.Text = smallNumberOne  + " " + lastSignFirstTwo + " "   +  smallNumberTwo;
+                }
+                else if (comboOperation.Text == "Division and multiplication")
+                {
+                    labelQuestion.Text = smallNumberOne  + " " + lastSignLastTwo + " "  +  smallNumberTwo;
+                }
+                else if (comboOperation.Text == "All")
+                {
+                    labelQuestion.Text = smallNumberOne  + " " + lastSignAll + " "  +  smallNumberTwo;
+                }
+            }
+
+            if (comboLevel.Text == "Medium")
+            {
+                if (comboOperation.Text == "Only addition")
+                {
+                    labelQuestion.Text = smallNumberOne + " " + "+" + " " + bigNumberOne;
+                }
+                else if (comboOperation.Text == "Only abstraction")
+                {
+                    labelQuestion.Text = smallNumberOne + " " + "-" + " " + bigNumberOne;
+                }
+                else if (comboOperation.Text == "Only division")
+                {
+                    labelQuestion.Text = smallNumberOne + " " + "/" + " " + bigNumberOne;
+                }
+                else if (comboOperation.Text == "Only multiplication")
+                {
+                    labelQuestion.Text = smallNumberOne + " " + "X" + " " + bigNumberOne;
+                }
+                else if (comboOperation.Text == "Addition and abstraction")
+                {
+                    labelQuestion.Text = smallNumberOne + " " + lastSignFirstTwo + " " + bigNumberOne;
+                }
+                else if (comboOperation.Text == "Division and multiplication")
+                {
+                    labelQuestion.Text = smallNumberOne + " " + lastSignLastTwo + " " + bigNumberOne;
+                }
+                else if (comboOperation.Text == "All")
+                {
+                    labelQuestion.Text = smallNumberOne + " " + lastSignAll + " " + bigNumberOne;
+                }
+            }
+
+            if (comboLevel.Text == "Hard")
+            {   
+                if (comboOperation.Text == "Only addition")
+                {
+                    labelQuestion.Text = bigNumberOne + " " + "+" + " " + bigNumberTwo;
+                }
+                else if (comboOperation.Text == "Only abstraction")
+                {
+                    labelQuestion.Text = bigNumberOne + " " + "-" + " " + bigNumberTwo;
+                }
+                else if (comboOperation.Text == "Only division")
+                {
+                    labelQuestion.Text = bigNumberOne + " " + "/" + " " + bigNumberTwo;
+                }
+                else if (comboOperation.Text == "Only multiplication")
+                {
+                    labelQuestion.Text = bigNumberOne + " " + "X" + " " + bigNumberTwo;
+                }
+                else if (comboOperation.Text == "Addition and abstraction")
+                {
+                    labelQuestion.Text = bigNumberOne + " " + lastSignFirstTwo + " " + bigNumberTwo;
+                }
+                else if (comboOperation.Text == "Division and multiplication")
+                {
+                    labelQuestion.Text = bigNumberOne + " " + lastSignLastTwo + " " + bigNumberTwo;
+                }
+                else if (comboOperation.Text == "All")
+                {
+                    labelQuestion.Text = bigNumberOne + " " + lastSignAll + " " + bigNumberTwo;
+                }
+            }
+        }
 
         public void buttonActiveControl()
         {
@@ -74,7 +188,7 @@ namespace MathGame
 
         private void objectsVisibleFalse()
         {
-            answerLeft.Visible = false;
+            buttonAnswerLeft.Visible = false;
             answerRight.Visible = false;
             labelQuestion.Visible = false;
             labelQuestionTime.Visible = false;
@@ -89,7 +203,7 @@ namespace MathGame
 
         private void objectsVisibleTrue()
         {
-            answerLeft.Visible = true;
+            buttonAnswerLeft.Visible = true;
             answerRight.Visible = true;
             labelQuestion.Visible = true;
             labelQuestionTime.Visible = true;
@@ -140,7 +254,7 @@ namespace MathGame
                 timerStart.Start();
                 startStop = false;
                 comboBoxEnabledFalse();
-                
+               
             }
             else
             {
@@ -150,6 +264,7 @@ namespace MathGame
                 timerGameTime.Stop();
                 timerQuestionTime.Stop();
                 labelGameSecond.Text = "59";
+                labelQuestionSecond.Text = "5";
                 secondGameOneMinute = 60;
                 secondStart = 4;
                 comboBoxEnabledTrue();
@@ -172,6 +287,9 @@ namespace MathGame
                 timerQuestionTime.Start();
                 labelStartTime.Visible = false;
                 objectsVisibleTrue();
+                createOperation();
+               
+                
             }
 
 
@@ -189,13 +307,25 @@ namespace MathGame
                 labelGameMinute.Text = minuteGameTwoMinute.ToString();
                 secondGameOneMinute -= 1;
                 labelGameSecond.Text = secondGameOneMinute.ToString();
-                if (secondGameOneMinute==0)
+                if (secondGameOneMinute==1)
                 {
                     minuteGameTwoMinute--;
                     labelGameMinute.Text = minuteGameTwoMinute.ToString();
+                    secondGameOneMinute = 59;
                 }
             }
 
+        }
+
+        private void timerQuestionTime_Tick(object sender, EventArgs e)
+        {  
+            secondQuestion -= 1;
+            labelQuestionSecond.Text = secondQuestion.ToString();
+            if (secondQuestion==1)
+            {
+                secondQuestion = 6;
+            }
+            
         }
     }
 }
