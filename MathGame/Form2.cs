@@ -20,7 +20,7 @@ namespace MathGame
         int secondStart = 4;
         int secondGameOneMinute = 61;
         int minuteGameTwoMinute = 1;
-        int secondQuestion=6;
+        int secondQuestion=Convert.ToInt32(comboSpeed.Text);
         bool startStop = true;
         Random number = new Random();
         
@@ -226,17 +226,29 @@ namespace MathGame
                 }
                 else if (comboOperation.Text == "All")
                 {
-                    labelQuestion.Text = bigNumberOne + " " + lastSignAll + " " + bigNumberTwo;
+                    
                     if (lastSignAll == "+")
                     {
+                        labelQuestion.Text = bigNumberOne + " " + "+" + " " + bigNumberTwo;
                         result = bigNumberOne + bigNumberTwo;
                     }
                     if (lastSignAll == "-")
                     {
-                        result = bigNumberOne - bigNumberTwo;
+                        if (bigNumberTwo > bigNumberOne)
+                        {
+                            labelQuestion.Text = bigNumberTwo + " " + "-" + " " + bigNumberOne;
+
+                            result = bigNumberTwo - bigNumberOne;
+                        }
+                        else
+                        {
+                            labelQuestion.Text = bigNumberOne + " " + "-" + " " + bigNumberTwo;
+                            result = bigNumberOne - bigNumberTwo;
+                        }
                     }
                     if (lastSignAll == "X")
                     {
+                        labelQuestion.Text = bigNumberOne + " " + "X" + " " + bigNumberTwo;
                         result = bigNumberOne * bigNumberTwo;
                     }
                 }
@@ -245,8 +257,6 @@ namespace MathGame
 
             return result;
         }
-
-      
 
         public void buttonActiveControl()
         {
