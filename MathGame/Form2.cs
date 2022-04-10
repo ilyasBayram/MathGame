@@ -20,7 +20,7 @@ namespace MathGame
         int secondStart = 4;
         int secondGameOneMinute = 61;
         int minuteGameTwoMinute = 1;
-        int secondQuestion=6;
+        int secondQuestion=7;
         bool startStop = true;
         Random number = new Random();
         
