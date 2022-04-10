@@ -20,7 +20,7 @@ namespace MathGame
         int secondStart = 4;
         int secondGameOneMinute = 61;
         int minuteGameTwoMinute = 1;
-        int secondQuestion=Convert.ToInt32(comboSpeed.Text);
+        int secondQuestion=6;
         bool startStop = true;
         Random number = new Random();
         
