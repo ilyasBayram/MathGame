@@ -22,53 +22,107 @@ namespace MathGame
         int minuteGameTwoMinute = 1;
         int secondQuestion=6;
         bool startStop = true;
-        Random operationSign = new Random();
         Random number = new Random();
+        
 
        
-        public void createOperation()
-        {   
+        public int createOperation()
+        {
+            int result = 0;
             int smallNumberOne = number.Next(1, 10);
             int smallNumberTwo = number.Next(1, 10);
             int bigNumberOne = number.Next(10, 99);
             int bigNumberTwo = number.Next(10, 99);
-            string[] signs = { "+", "-", "*", "/" };
-            int signAllNumbers = operationSign.Next(0, 4);
-            int signFirstTwo = operationSign.Next(0, 2);
-            int signLastTwo = operationSign.Next(2, 4);
+            string[] signs = { "+", "-", "X"};
+            int signAllNumbers = number.Next(0, 3);
+            int signFirstTwo = number.Next(0, 2);
             string lastSignAll = signs[signAllNumbers];
             string lastSignFirstTwo = signs[signFirstTwo];
-            string lastSignLastTwo = signs[signLastTwo];
 
             if (comboLevel.Text=="Easy")
             {
                 if (comboOperation.Text == "Only addition")
                 {
                     labelQuestion.Text = smallNumberOne  + " " + "+" + " " +  smallNumberTwo;
+                    result = smallNumberOne + smallNumberTwo;
+
                 }
                 else if (comboOperation.Text == "Only abstraction")
-                { 
-                    labelQuestion.Text = smallNumberOne  + " " + "-" + " " +  smallNumberTwo;
-                }
-                else if (comboOperation.Text == "Only division")
                 {
-                    labelQuestion.Text = smallNumberOne  + " " + "/" + " " +  smallNumberTwo;
+                    if (smallNumberTwo > smallNumberOne)
+                    {
+                        labelQuestion.Text = smallNumberTwo + " " + "-" + " " + smallNumberOne;
+
+                        result = smallNumberTwo - smallNumberOne;
+                    }
+                    else
+                    {
+                        labelQuestion.Text = smallNumberOne + " " + "-" + " " + smallNumberTwo;
+                        result = smallNumberOne - smallNumberTwo;
+                    }
+
                 }
+              
                 else if (comboOperation.Text == "Only multiplication")
                 {
                     labelQuestion.Text = smallNumberOne  + " " + "X" + " " +  smallNumberTwo;
+                    result = smallNumberOne * smallNumberTwo;
                 }
                 else if (comboOperation.Text == "Addition and abstraction")
                 {
-                    labelQuestion.Text = smallNumberOne  + " " + lastSignFirstTwo + " "   +  smallNumberTwo;
-                }
-                else if (comboOperation.Text == "Division and multiplication")
-                {
-                    labelQuestion.Text = smallNumberOne  + " " + lastSignLastTwo + " "  +  smallNumberTwo;
+                   
+                    if (lastSignFirstTwo=="+")
+                    {
+                        result = smallNumberOne + smallNumberTwo;
+                        labelQuestion.Text = smallNumberOne + " " + "+" + " " + smallNumberTwo;
+
+                    }
+                    if (lastSignFirstTwo == "-")
+                    {
+                        if (smallNumberTwo > smallNumberOne)
+                        {
+                            labelQuestion.Text = smallNumberTwo + " " + "-" + " " + smallNumberOne;
+
+                            result = smallNumberTwo - smallNumberOne;
+                        }
+                        else
+                        {
+                            labelQuestion.Text = smallNumberOne + " " + "-" + " " + smallNumberTwo;
+                            result = smallNumberOne - smallNumberTwo;
+                        }
+
+                    }
+
                 }
                 else if (comboOperation.Text == "All")
                 {
-                    labelQuestion.Text = smallNumberOne  + " " + lastSignAll + " "  +  smallNumberTwo;
+                   
+                    
+                    if (lastSignAll == "+")
+                    {
+                        result = smallNumberOne + smallNumberTwo;
+                        labelQuestion.Text = smallNumberOne + " " + "+" + " " + smallNumberTwo;
+                    }
+                    if (lastSignAll == "-")
+                    {
+                        if (smallNumberTwo > smallNumberOne)
+                        {
+                            labelQuestion.Text = smallNumberTwo + " " + "-" + " " + smallNumberOne;
+
+                            result = smallNumberTwo - smallNumberOne;
+                        }
+                        else
+                        {
+                            labelQuestion.Text = smallNumberOne + " " + "-" + " " + smallNumberTwo;
+                            result = smallNumberOne - smallNumberTwo;
+                        }
+
+                    }
+                    if (lastSignAll == "X")
+                    {
+                        labelQuestion.Text = smallNumberOne + " " + "X" + " " + smallNumberTwo;
+                        result = smallNumberOne * smallNumberTwo;
+                    }
                 }
             }
 
@@ -77,30 +131,46 @@ namespace MathGame
                 if (comboOperation.Text == "Only addition")
                 {
                     labelQuestion.Text = smallNumberOne + " " + "+" + " " + bigNumberOne;
+                    result = smallNumberOne + bigNumberOne;
                 }
                 else if (comboOperation.Text == "Only abstraction")
                 {
-                    labelQuestion.Text = smallNumberOne + " " + "-" + " " + bigNumberOne;
+                    labelQuestion.Text = bigNumberOne + " " + "-" + " " + smallNumberOne;
+                    result = bigNumberOne - smallNumberOne;
                 }
-                else if (comboOperation.Text == "Only division")
-                {
-                    labelQuestion.Text = smallNumberOne + " " + "/" + " " + bigNumberOne;
-                }
+               
                 else if (comboOperation.Text == "Only multiplication")
                 {
                     labelQuestion.Text = smallNumberOne + " " + "X" + " " + bigNumberOne;
+                    result = smallNumberOne * bigNumberOne;
                 }
                 else if (comboOperation.Text == "Addition and abstraction")
                 {
                     labelQuestion.Text = smallNumberOne + " " + lastSignFirstTwo + " " + bigNumberOne;
-                }
-                else if (comboOperation.Text == "Division and multiplication")
-                {
-                    labelQuestion.Text = smallNumberOne + " " + lastSignLastTwo + " " + bigNumberOne;
+                    if (lastSignFirstTwo == "+")
+                    {
+                        result = smallNumberOne + bigNumberOne;
+                    }
+                    if (lastSignFirstTwo == "-")
+                    {
+                        result = smallNumberOne - bigNumberOne;
+                    }
                 }
                 else if (comboOperation.Text == "All")
                 {
                     labelQuestion.Text = smallNumberOne + " " + lastSignAll + " " + bigNumberOne;
+                    if (lastSignAll == "+")
+                    {
+                        result = smallNumberOne + bigNumberOne;
+                    }
+                    if (lastSignAll == "-")
+                    {
+                        result = smallNumberOne - bigNumberOne;
+                    }
+                    if (lastSignAll == "X")
+                    {
+                        result = smallNumberOne * bigNumberOne;
+                    }
                 }
             }
 
@@ -109,33 +179,74 @@ namespace MathGame
                 if (comboOperation.Text == "Only addition")
                 {
                     labelQuestion.Text = bigNumberOne + " " + "+" + " " + bigNumberTwo;
+                    result = bigNumberOne + bigNumberTwo;
                 }
                 else if (comboOperation.Text == "Only abstraction")
-                {
-                    labelQuestion.Text = bigNumberOne + " " + "-" + " " + bigNumberTwo;
+                { 
+                    if (bigNumberTwo > bigNumberOne)
+                    {
+                        labelQuestion.Text = bigNumberTwo + " " + "-" + " " + bigNumberOne;
+
+                        result = bigNumberTwo - bigNumberOne;
+                    }
+                    else
+                    {
+                        labelQuestion.Text = bigNumberOne + " " + "-" + " " + bigNumberTwo;
+                        result = bigNumberOne - bigNumberTwo;
+                    }
                 }
-                else if (comboOperation.Text == "Only division")
-                {
-                    labelQuestion.Text = bigNumberOne + " " + "/" + " " + bigNumberTwo;
-                }
+               
                 else if (comboOperation.Text == "Only multiplication")
                 {
                     labelQuestion.Text = bigNumberOne + " " + "X" + " " + bigNumberTwo;
+                    result = bigNumberOne * bigNumberTwo;
                 }
                 else if (comboOperation.Text == "Addition and abstraction")
                 {
-                    labelQuestion.Text = bigNumberOne + " " + lastSignFirstTwo + " " + bigNumberTwo;
-                }
-                else if (comboOperation.Text == "Division and multiplication")
-                {
-                    labelQuestion.Text = bigNumberOne + " " + lastSignLastTwo + " " + bigNumberTwo;
+                    
+                    if (lastSignFirstTwo == "+")
+                    {
+                        labelQuestion.Text = bigNumberOne + " " + "+" + " " + bigNumberTwo;
+                        result = bigNumberOne + bigNumberTwo;
+                    }
+                    if (lastSignFirstTwo == "-")
+                    {
+                        if (bigNumberTwo > bigNumberOne)
+                        {
+                            labelQuestion.Text = bigNumberTwo + " " + "-" + " " + bigNumberOne;
+
+                            result = bigNumberTwo - bigNumberOne;
+                        }
+                        else
+                        {
+                            labelQuestion.Text = bigNumberOne + " " + "-" + " " + bigNumberTwo;
+                            result = bigNumberOne - bigNumberTwo;
+                        }
+                    }
                 }
                 else if (comboOperation.Text == "All")
                 {
                     labelQuestion.Text = bigNumberOne + " " + lastSignAll + " " + bigNumberTwo;
+                    if (lastSignAll == "+")
+                    {
+                        result = bigNumberOne + bigNumberTwo;
+                    }
+                    if (lastSignAll == "-")
+                    {
+                        result = bigNumberOne - bigNumberTwo;
+                    }
+                    if (lastSignAll == "X")
+                    {
+                        result = bigNumberOne * bigNumberTwo;
+                    }
                 }
             }
+
+
+            return result;
         }
+
+      
 
         public void buttonActiveControl()
         {
@@ -277,6 +388,7 @@ namespace MathGame
 
         private void timerGameTime_Tick(object sender, EventArgs e)
         {
+            int result = 0;
             labelStartTime.Visible = true;
             secondStart-=1;
             labelStartTime.Text = secondStart.ToString();
@@ -287,8 +399,22 @@ namespace MathGame
                 timerQuestionTime.Start();
                 labelStartTime.Visible = false;
                 objectsVisibleTrue();
-                createOperation();
-               
+                result=createOperation();
+                int buttonText = number.Next(0, 2);
+                int wrongAnswer = number.Next( result - 5,result + 5);
+                if (buttonText==0)
+                {
+                    buttonAnswerLeft.Text = Convert.ToString(result);
+                    answerRight.Text = Convert.ToString(wrongAnswer);
+                }
+                else
+                {
+                    buttonAnswerLeft.Text = Convert.ToString(wrongAnswer);
+                    answerRight.Text = Convert.ToString(result);
+                }
+            
+                
+                
                 
             }
 
@@ -327,5 +453,7 @@ namespace MathGame
             }
             
         }
+
+     
     }
 }

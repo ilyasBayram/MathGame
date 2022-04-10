@@ -95,7 +95,7 @@
             this.comboLevel.FormattingEnabled = true;
             this.comboLevel.Items.AddRange(new object[] {
             "Easy",
-            "Midium",
+            "Medium",
             "Hard"});
             this.comboLevel.Location = new System.Drawing.Point(38, 213);
             this.comboLevel.Name = "comboLevel";
