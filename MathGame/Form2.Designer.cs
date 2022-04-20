@@ -43,7 +43,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.labelGameTime = new System.Windows.Forms.Label();
             this.buttonAnswerLeft = new System.Windows.Forms.Button();
-            this.answerRight = new System.Windows.Forms.Button();
+            this.buttonAnswerRight = new System.Windows.Forms.Button();
             this.labelQuestion = new System.Windows.Forms.Label();
             this.labelQuestionTime = new System.Windows.Forms.Label();
             this.timerStart = new System.Windows.Forms.Timer(this.components);
@@ -54,6 +54,9 @@
             this.labelQuestionSecond = new System.Windows.Forms.Label();
             this.timerGameTime = new System.Windows.Forms.Timer(this.components);
             this.timerQuestionTime = new System.Windows.Forms.Timer(this.components);
+            this.answerTime = new System.Windows.Forms.Timer(this.components);
+            this.labelCorrectAnswer = new System.Windows.Forms.Label();
+            this.labelWrongAnswer = new System.Windows.Forms.Label();
             this.groupProperties.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,10 +79,8 @@
             this.comboOperation.Items.AddRange(new object[] {
             "Only addition",
             "Only abstraction",
-            "Only division",
             "Only multiplication",
             "Addition and abstraction",
-            "Division and multiplication",
             "All"});
             this.comboOperation.Location = new System.Drawing.Point(38, 97);
             this.comboOperation.Name = "comboOperation";
@@ -222,16 +223,18 @@
             this.buttonAnswerLeft.TabIndex = 8;
             this.buttonAnswerLeft.Text = "36";
             this.buttonAnswerLeft.UseVisualStyleBackColor = true;
+            this.buttonAnswerLeft.Click += new System.EventHandler(this.buttonAnswerLeft_Click);
             // 
-            // answerRight
+            // buttonAnswerRight
             // 
-            this.answerRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.answerRight.Location = new System.Drawing.Point(746, 397);
-            this.answerRight.Name = "answerRight";
-            this.answerRight.Size = new System.Drawing.Size(207, 90);
-            this.answerRight.TabIndex = 9;
-            this.answerRight.Text = "38";
-            this.answerRight.UseVisualStyleBackColor = true;
+            this.buttonAnswerRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonAnswerRight.Location = new System.Drawing.Point(746, 397);
+            this.buttonAnswerRight.Name = "buttonAnswerRight";
+            this.buttonAnswerRight.Size = new System.Drawing.Size(207, 90);
+            this.buttonAnswerRight.TabIndex = 9;
+            this.buttonAnswerRight.Text = "38";
+            this.buttonAnswerRight.UseVisualStyleBackColor = true;
+            this.buttonAnswerRight.Click += new System.EventHandler(this.buttonAnswerRight_Click);
             // 
             // labelQuestion
             // 
@@ -258,7 +261,7 @@
             // timerStart
             // 
             this.timerStart.Interval = 1000;
-            this.timerStart.Tick += new System.EventHandler(this.timerGameTime_Tick);
+            this.timerStart.Tick += new System.EventHandler(this.timerStart_Tick);
             // 
             // labelStartTime
             // 
@@ -321,6 +324,28 @@
             this.timerQuestionTime.Interval = 1000;
             this.timerQuestionTime.Tick += new System.EventHandler(this.timerQuestionTime_Tick);
             // 
+            // answerTime
+            // 
+            this.answerTime.Tick += new System.EventHandler(this.answerTime_Tick);
+            // 
+            // labelCorrectAnswer
+            // 
+            this.labelCorrectAnswer.AutoSize = true;
+            this.labelCorrectAnswer.Location = new System.Drawing.Point(611, 581);
+            this.labelCorrectAnswer.Name = "labelCorrectAnswer";
+            this.labelCorrectAnswer.Size = new System.Drawing.Size(51, 20);
+            this.labelCorrectAnswer.TabIndex = 17;
+            this.labelCorrectAnswer.Text = "label1";
+            // 
+            // labelWrongAnswer
+            // 
+            this.labelWrongAnswer.AutoSize = true;
+            this.labelWrongAnswer.Location = new System.Drawing.Point(761, 581);
+            this.labelWrongAnswer.Name = "labelWrongAnswer";
+            this.labelWrongAnswer.Size = new System.Drawing.Size(51, 20);
+            this.labelWrongAnswer.TabIndex = 18;
+            this.labelWrongAnswer.Text = "label1";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -328,6 +353,8 @@
             this.BackColor = System.Drawing.Color.CadetBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1027, 697);
+            this.Controls.Add(this.labelWrongAnswer);
+            this.Controls.Add(this.labelCorrectAnswer);
             this.Controls.Add(this.labelQuestionSecond);
             this.Controls.Add(this.labelGameSecond);
             this.Controls.Add(this.labelGameTimeColon);
@@ -335,7 +362,7 @@
             this.Controls.Add(this.labelStartTime);
             this.Controls.Add(this.labelQuestionTime);
             this.Controls.Add(this.labelQuestion);
-            this.Controls.Add(this.answerRight);
+            this.Controls.Add(this.buttonAnswerRight);
             this.Controls.Add(this.buttonAnswerLeft);
             this.Controls.Add(this.labelGameTime);
             this.Controls.Add(this.groupProperties);
@@ -366,7 +393,7 @@
         private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.Label labelGameTime;
         private System.Windows.Forms.Button buttonAnswerLeft;
-        private System.Windows.Forms.Button answerRight;
+        private System.Windows.Forms.Button buttonAnswerRight;
         private System.Windows.Forms.Label labelQuestion;
         private System.Windows.Forms.Label labelQuestionTime;
         private System.Windows.Forms.Timer timerStart;
@@ -377,5 +404,8 @@
         private System.Windows.Forms.Label labelQuestionSecond;
         private System.Windows.Forms.Timer timerGameTime;
         private System.Windows.Forms.Timer timerQuestionTime;
+        private System.Windows.Forms.Timer answerTime;
+        private System.Windows.Forms.Label labelCorrectAnswer;
+        private System.Windows.Forms.Label labelWrongAnswer;
     }
 }

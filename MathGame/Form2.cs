@@ -16,11 +16,14 @@ namespace MathGame
         {
             InitializeComponent();
         }
-        
+        int result = 0;
         int secondStart = 4;
         int secondGameOneMinute = 61;
         int minuteGameTwoMinute = 1;
-        int secondQuestion=7;
+        int secondQuestion=6;
+        double secondAnswering = 2;
+        int correctAnswer = 0;
+        int wrongAnswer = 0;
         bool startStop = true;
         Random number = new Random();
         
@@ -31,8 +34,8 @@ namespace MathGame
             int result = 0;
             int smallNumberOne = number.Next(1, 10);
             int smallNumberTwo = number.Next(1, 10);
-            int bigNumberOne = number.Next(10, 99);
-            int bigNumberTwo = number.Next(10, 99);
+            int bigNumberOne = number.Next(10, 15);
+            int bigNumberTwo = number.Next(10, 15);
             string[] signs = { "+", "-", "X"};
             int signAllNumbers = number.Next(0, 3);
             int signFirstTwo = number.Next(0, 2);
@@ -310,7 +313,7 @@ namespace MathGame
         private void objectsVisibleFalse()
         {
             buttonAnswerLeft.Visible = false;
-            answerRight.Visible = false;
+            buttonAnswerRight.Visible = false;
             labelQuestion.Visible = false;
             labelQuestionTime.Visible = false;
             labelGameTime.Visible = false;
@@ -325,7 +328,7 @@ namespace MathGame
         private void objectsVisibleTrue()
         {
             buttonAnswerLeft.Visible = true;
-            answerRight.Visible = true;
+            buttonAnswerRight.Visible = true;
             labelQuestion.Visible = true;
             labelQuestionTime.Visible = true;
             labelGameTime.Visible = true;
@@ -333,6 +336,23 @@ namespace MathGame
             labelGameTimeColon.Visible = true;
             labelGameSecond.Visible = true;
             labelQuestionSecond.Visible = true;
+        }
+
+        private void creatingNumber()
+        {
+            result = createOperation();
+            int buttonText = number.Next(0, 2);
+            int wrongAnswer = number.Next(result - 5, result + 5);
+            if (buttonText == 0)
+            {
+                buttonAnswerLeft.Text = Convert.ToString(result);
+                buttonAnswerRight.Text = Convert.ToString(wrongAnswer);
+            }
+            else
+            {
+                buttonAnswerLeft.Text = Convert.ToString(wrongAnswer);
+                buttonAnswerRight.Text = Convert.ToString(result);
+            }
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -368,12 +388,16 @@ namespace MathGame
         private void buttonStart_Click(object sender, EventArgs e)
         {
             buttonActiveControl();
+            buttonAnswerLeft.BackColor = Color.Azure;
+            buttonAnswerRight.BackColor = Color.Azure;
 
             if (startStop==true)
             {
                 buttonStart.Text = "Stop";
                 timerStart.Start();
                 startStop = false;
+                labelGameSecond.Text = "59";
+                labelQuestionSecond.Text = "5";
                 comboBoxEnabledFalse();
                
             }
@@ -383,9 +407,7 @@ namespace MathGame
                 startStop = true;
                 timerStart.Stop();
                 timerGameTime.Stop();
-                timerQuestionTime.Stop();
-                labelGameSecond.Text = "59";
-                labelQuestionSecond.Text = "5";
+                timerQuestionTime.Stop();                
                 secondGameOneMinute = 60;
                 secondStart = 4;
                 comboBoxEnabledTrue();
@@ -396,9 +418,8 @@ namespace MathGame
         
         }
 
-        private void timerGameTime_Tick(object sender, EventArgs e)
+        private void timerStart_Tick(object sender, EventArgs e)
         {
-            int result = 0;
             labelStartTime.Visible = true;
             secondStart-=1;
             labelStartTime.Text = secondStart.ToString();
@@ -415,12 +436,12 @@ namespace MathGame
                 if (buttonText==0)
                 {
                     buttonAnswerLeft.Text = Convert.ToString(result);
-                    answerRight.Text = Convert.ToString(wrongAnswer);
+                    buttonAnswerRight.Text = Convert.ToString(wrongAnswer);
                 }
                 else
                 {
                     buttonAnswerLeft.Text = Convert.ToString(wrongAnswer);
-                    answerRight.Text = Convert.ToString(result);
+                    buttonAnswerRight.Text = Convert.ToString(result);
                 }
             
                 
@@ -457,13 +478,61 @@ namespace MathGame
         {  
             secondQuestion -= 1;
             labelQuestionSecond.Text = secondQuestion.ToString();
-            if (secondQuestion==1)
+            if (secondQuestion==0)
             {
+                createOperation();
                 secondQuestion = 6;
             }
             
         }
 
-     
+        private void answerTime_Tick(object sender, EventArgs e)
+        {
+            secondAnswering -= 1;
+            if (secondAnswering == 0)
+            {
+                creatingNumber();
+                buttonAnswerLeft.BackColor = Color.Azure;
+                buttonAnswerRight.BackColor = Color.Azure;
+            } 
+        }
+
+        private void buttonAnswerLeft_Click(object sender, EventArgs e)
+        {
+            
+            if (buttonAnswerLeft.Text == Convert.ToString(result))
+            {
+                buttonAnswerLeft.BackColor = Color.Green;
+                correctAnswer++;
+                labelCorrectAnswer.Text = Convert.ToString(correctAnswer);
+            }
+            else
+            {
+                buttonAnswerLeft.BackColor = Color.Red;
+                wrongAnswer++;
+                labelWrongAnswer.Text = Convert.ToString(wrongAnswer);
+            }
+            answerTime.Start();
+            secondAnswering = 2;
+
+        }
+
+        private void buttonAnswerRight_Click(object sender, EventArgs e)
+        {
+            if (buttonAnswerRight.Text == Convert.ToString(result))
+            {
+                buttonAnswerRight.BackColor = Color.Green;
+                correctAnswer++;
+                labelCorrectAnswer.Text = Convert.ToString(correctAnswer);
+            }
+            else
+            {
+                buttonAnswerRight.BackColor = Color.Red;
+                wrongAnswer++;
+                labelWrongAnswer.Text = Convert.ToString(wrongAnswer);
+            }
+            answerTime.Start();
+            secondAnswering = 2;
+        }
     }
 }
