@@ -149,14 +149,14 @@ namespace MathGame
                 }
                 else if (comboOperation.Text == "Addition and abstraction")
                 {
-                    labelQuestion.Text = smallNumberOne + " " + lastSignFirstTwo + " " + bigNumberOne;
+                    labelQuestion.Text = bigNumberOne + " " + lastSignFirstTwo + " " + smallNumberOne;
                     if (lastSignFirstTwo == "+")
                     {
                         result = smallNumberOne + bigNumberOne;
                     }
                     if (lastSignFirstTwo == "-")
                     {
-                        result = smallNumberOne - bigNumberOne;
+                        result =  bigNumberOne-smallNumberOne;
                     }
                 }
                 else if (comboOperation.Text == "All")
@@ -168,7 +168,7 @@ namespace MathGame
                     }
                     if (lastSignAll == "-")
                     {
-                        result = smallNumberOne - bigNumberOne;
+                        result = bigNumberOne-smallNumberOne;
                     }
                     if (lastSignAll == "X")
                     {
@@ -480,7 +480,7 @@ namespace MathGame
             labelQuestionSecond.Text = secondQuestion.ToString();
             if (secondQuestion==0)
             {
-                createOperation();
+                creatingNumber();
                 secondQuestion = 6;
             }
             
@@ -494,7 +494,9 @@ namespace MathGame
                 creatingNumber();
                 buttonAnswerLeft.BackColor = Color.Azure;
                 buttonAnswerRight.BackColor = Color.Azure;
-            } 
+            }
+            secondQuestion = 6;
+            
         }
 
         private void buttonAnswerLeft_Click(object sender, EventArgs e)
@@ -514,11 +516,12 @@ namespace MathGame
             }
             answerTime.Start();
             secondAnswering = 2;
-
+            
         }
 
         private void buttonAnswerRight_Click(object sender, EventArgs e)
         {
+            
             if (buttonAnswerRight.Text == Convert.ToString(result))
             {
                 buttonAnswerRight.BackColor = Color.Green;
