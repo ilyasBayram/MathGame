@@ -20,7 +20,7 @@ namespace MathGame
         int secondStart = 4;
         int secondGameOneMinute = 61;
         int minuteGameTwoMinute = 1;
-        int secondQuestion=5;
+        int secondQuestion;
         double secondAnswering = 2;
         int correctAnswer = 0;
         int wrongAnswer = 0;
@@ -399,16 +399,15 @@ namespace MathGame
             buttonAnswerRight.BackColor = Color.Azure;
         }
 
-
         private void Form2_Load(object sender, EventArgs e)
         {
             comboOperation.SelectedIndex = 0;
             comboLevel.SelectedIndex = 0;
-            comboSpeed.SelectedIndex = 0;
+            comboSpeed.SelectedIndex = 3;
             comboTime.SelectedIndex = 0;
             objectsVisibleFalse();
             lastObjectsVisibleFalse();
-           
+            secondQuestion = Convert.ToInt32(comboSpeed.Text);
         }
 
         private void comboOperation_SelectedIndexChanged(object sender, EventArgs e)
@@ -442,7 +441,7 @@ namespace MathGame
                 timerStart.Start();
                 startStop = false;
                 labelGameSecond.Text = "59";
-                labelQuestionSecond.Text = "5";
+                labelQuestionSecond.Text = (comboSpeed.Text).ToString();
                 comboBoxEnabledFalse();
                
             }
@@ -489,10 +488,7 @@ namespace MathGame
                     buttonAnswerLeft.Text = Convert.ToString(wrongAnswer);
                     buttonAnswerRight.Text = Convert.ToString(result);
                 }
-            
-                
-                
-                
+  
             }
 
 
@@ -521,19 +517,24 @@ namespace MathGame
             {
                 lastObjectsVisibleTrue();
                 objectsVisibleFalse();
-
+                labelCorrectAnswer.Text = Convert.ToString(correctAnswer);
+                labelWrongAnswer.Text = Convert.ToString(wrongAnswer);
+                lblNotAnswerQuestions.Text = Convert.ToString(notAnsweredQuestions);
+                timerGameTime.Stop();
+                timerQuestionTime.Stop();
+                answerTime.Stop();
             }
 
         }
 
         private void timerQuestionTime_Tick(object sender, EventArgs e)
-        {  
+        {
             secondQuestion -= 1;
             labelQuestionSecond.Text = secondQuestion.ToString();
             if (secondQuestion==0)
             {
                 creatingNumber();
-                secondQuestion = 6;
+                secondQuestion = Convert.ToInt32(comboSpeed.Text)+1;
                 allAnswer();
                 notAnsweredQuestion();
             }
@@ -547,7 +548,7 @@ namespace MathGame
             {
                 creatingNumber();
                 answerButtonsFirstColor();
-                secondQuestion = 6;
+                secondQuestion = Convert.ToInt32(comboSpeed.Text)+1;
             }    
         }
 

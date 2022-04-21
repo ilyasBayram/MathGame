@@ -60,10 +60,10 @@
             this.labelAllQuestion = new System.Windows.Forms.Label();
             this.lblNotAnswerQuestions = new System.Windows.Forms.Label();
             this.groupBoxScore = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.labelCongurulate = new System.Windows.Forms.Label();
             this.groupProperties.SuspendLayout();
             this.groupBoxScore.SuspendLayout();
@@ -341,6 +341,7 @@
             // 
             this.labelCorrectAnswer.AutoSize = true;
             this.labelCorrectAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelCorrectAnswer.ForeColor = System.Drawing.Color.Chartreuse;
             this.labelCorrectAnswer.Location = new System.Drawing.Point(365, 189);
             this.labelCorrectAnswer.Name = "labelCorrectAnswer";
             this.labelCorrectAnswer.Size = new System.Drawing.Size(95, 36);
@@ -351,6 +352,7 @@
             // 
             this.labelWrongAnswer.AutoSize = true;
             this.labelWrongAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelWrongAnswer.ForeColor = System.Drawing.Color.Red;
             this.labelWrongAnswer.Location = new System.Drawing.Point(365, 293);
             this.labelWrongAnswer.Name = "labelWrongAnswer";
             this.labelWrongAnswer.Size = new System.Drawing.Size(95, 36);
@@ -395,15 +397,25 @@
             this.groupBoxScore.TabStop = false;
             this.groupBoxScore.Text = "Scores";
             // 
-            // label1
+            // label4
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(18, 90);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(248, 32);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "All Questions        :";
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label4.Location = new System.Drawing.Point(18, 390);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(249, 32);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Not Answered       :";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.Location = new System.Drawing.Point(18, 291);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(249, 32);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "Wrong Answers    :";
             // 
             // label2
             // 
@@ -415,25 +427,15 @@
             this.label2.TabIndex = 22;
             this.label2.Text = "Correct Answers   :";
             // 
-            // label3
+            // label1
             // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(18, 285);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(249, 32);
-            this.label3.TabIndex = 23;
-            this.label3.Text = "Wrong Answers    :";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label4.Location = new System.Drawing.Point(18, 390);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(249, 32);
-            this.label4.TabIndex = 24;
-            this.label4.Text = "Not Answered       :";
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Location = new System.Drawing.Point(18, 90);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(248, 32);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "All Questions        :";
             // 
             // labelCongurulate
             // 
