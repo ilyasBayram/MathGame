@@ -386,7 +386,6 @@ namespace MathGame
             labelScored.Text = point.ToString();
         }
 
-
         private void allAnswer()
         {
             allQuestions++;
@@ -409,7 +408,7 @@ namespace MathGame
         {
             comboOperation.SelectedIndex = 0;
             comboLevel.SelectedIndex = 0;
-            comboSpeed.SelectedIndex = 3;
+            comboSpeed.Text = "6";
             comboTime.SelectedIndex = 0;
             objectsVisibleFalse();
             lastObjectsVisibleFalse();
@@ -447,7 +446,8 @@ namespace MathGame
                 timerStart.Start();
                 startStop = false;
                 labelGameSecond.Text = "59";
-                labelQuestionSecond.Text = (comboSpeed.Text).ToString();
+                labelQuestionSecond.Text = comboSpeed.Text;
+                secondQuestion = Convert.ToInt32(comboSpeed.Text);
                 comboBoxEnabledFalse();
                
             }
