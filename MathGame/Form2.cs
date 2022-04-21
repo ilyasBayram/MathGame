@@ -20,10 +20,12 @@ namespace MathGame
         int secondStart = 4;
         int secondGameOneMinute = 61;
         int minuteGameTwoMinute = 1;
-        int secondQuestion=6;
+        int secondQuestion=5;
         double secondAnswering = 2;
         int correctAnswer = 0;
         int wrongAnswer = 0;
+        int allQuestions = 0;
+        int notAnsweredQuestions = 0;
         bool startStop = true;
         Random number = new Random();
         
@@ -311,6 +313,7 @@ namespace MathGame
         }
 
         private void objectsVisibleFalse()
+
         {
             buttonAnswerLeft.Visible = false;
             buttonAnswerRight.Visible = false;
@@ -322,7 +325,6 @@ namespace MathGame
             labelGameTimeColon.Visible =false;
             labelGameSecond.Visible = false;
             labelQuestionSecond.Visible = false;
-
         }
 
         private void objectsVisibleTrue()
@@ -336,6 +338,18 @@ namespace MathGame
             labelGameTimeColon.Visible = true;
             labelGameSecond.Visible = true;
             labelQuestionSecond.Visible = true;
+        }
+
+        private void lastObjectsVisibleFalse()
+        {
+            groupBoxScore.Visible = false;
+            labelCongurulate.Visible = false;
+        }
+
+        private void lastObjectsVisibleTrue()
+        {
+            groupBoxScore.Visible = true;
+            labelCongurulate.Visible = true;
         }
 
         private void creatingNumber()
@@ -355,6 +369,37 @@ namespace MathGame
             }
         }
 
+        private void correctAnswerLabel()
+        {
+            correctAnswer++;
+            labelCorrectAnswer.Text = Convert.ToString(correctAnswer);
+        }
+
+        private void wrongAnswerLabel()
+        {
+            wrongAnswer++;
+            labelWrongAnswer.Text = Convert.ToString(wrongAnswer);
+        }
+
+        private void allAnswer()
+        {
+            allQuestions++;
+            labelAllQuestion.Text = Convert.ToString(allQuestions);
+        }
+
+        private void notAnsweredQuestion()
+        {
+            notAnsweredQuestions++;
+            lblNotAnswerQuestions.Text = Convert.ToString(notAnsweredQuestions);
+        }
+
+        private void answerButtonsFirstColor()
+        {
+            buttonAnswerLeft.BackColor = Color.Azure;
+            buttonAnswerRight.BackColor = Color.Azure;
+        }
+
+
         private void Form2_Load(object sender, EventArgs e)
         {
             comboOperation.SelectedIndex = 0;
@@ -362,6 +407,7 @@ namespace MathGame
             comboSpeed.SelectedIndex = 0;
             comboTime.SelectedIndex = 0;
             objectsVisibleFalse();
+            lastObjectsVisibleFalse();
            
         }
 
@@ -388,8 +434,7 @@ namespace MathGame
         private void buttonStart_Click(object sender, EventArgs e)
         {
             buttonActiveControl();
-            buttonAnswerLeft.BackColor = Color.Azure;
-            buttonAnswerRight.BackColor = Color.Azure;
+            answerButtonsFirstColor();
 
             if (startStop==true)
             {
@@ -413,6 +458,7 @@ namespace MathGame
                 comboBoxEnabledTrue();
                 labelStartTime.Visible = false;
                 objectsVisibleFalse();
+                lastObjectsVisibleFalse();
                 
             }
         
@@ -471,6 +517,12 @@ namespace MathGame
                     secondGameOneMinute = 59;
                 }
             }
+            if (secondGameOneMinute==0)
+            {
+                lastObjectsVisibleTrue();
+                objectsVisibleFalse();
+
+            }
 
         }
 
@@ -482,37 +534,36 @@ namespace MathGame
             {
                 creatingNumber();
                 secondQuestion = 6;
+                allAnswer();
+                notAnsweredQuestion();
             }
-            
+                       
         }
 
         private void answerTime_Tick(object sender, EventArgs e)
         {
             secondAnswering -= 1;
-            if (secondAnswering == 0)
+            if (secondAnswering == 1)
             {
                 creatingNumber();
-                buttonAnswerLeft.BackColor = Color.Azure;
-                buttonAnswerRight.BackColor = Color.Azure;
-            }
-            secondQuestion = 6;
-            
+                answerButtonsFirstColor();
+                secondQuestion = 6;
+            }    
         }
 
         private void buttonAnswerLeft_Click(object sender, EventArgs e)
         {
-            
+            allAnswer();
+
             if (buttonAnswerLeft.Text == Convert.ToString(result))
             {
                 buttonAnswerLeft.BackColor = Color.Green;
-                correctAnswer++;
-                labelCorrectAnswer.Text = Convert.ToString(correctAnswer);
+                correctAnswerLabel();
             }
             else
             {
                 buttonAnswerLeft.BackColor = Color.Red;
-                wrongAnswer++;
-                labelWrongAnswer.Text = Convert.ToString(wrongAnswer);
+                wrongAnswerLabel();
             }
             answerTime.Start();
             secondAnswering = 2;
@@ -521,18 +572,17 @@ namespace MathGame
 
         private void buttonAnswerRight_Click(object sender, EventArgs e)
         {
-            
+            allAnswer();
+
             if (buttonAnswerRight.Text == Convert.ToString(result))
             {
                 buttonAnswerRight.BackColor = Color.Green;
-                correctAnswer++;
-                labelCorrectAnswer.Text = Convert.ToString(correctAnswer);
+                correctAnswerLabel();
             }
             else
             {
                 buttonAnswerRight.BackColor = Color.Red;
-                wrongAnswer++;
-                labelWrongAnswer.Text = Convert.ToString(wrongAnswer);
+                wrongAnswerLabel();
             }
             answerTime.Start();
             secondAnswering = 2;
