@@ -60,6 +60,8 @@
             this.labelAllQuestion = new System.Windows.Forms.Label();
             this.lblNotAnswerQuestions = new System.Windows.Forms.Label();
             this.groupBoxScore = new System.Windows.Forms.GroupBox();
+            this.labelScore = new System.Windows.Forms.Label();
+            this.labelScored = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -342,7 +344,7 @@
             this.labelCorrectAnswer.AutoSize = true;
             this.labelCorrectAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelCorrectAnswer.ForeColor = System.Drawing.Color.Chartreuse;
-            this.labelCorrectAnswer.Location = new System.Drawing.Point(365, 189);
+            this.labelCorrectAnswer.Location = new System.Drawing.Point(365, 150);
             this.labelCorrectAnswer.Name = "labelCorrectAnswer";
             this.labelCorrectAnswer.Size = new System.Drawing.Size(95, 36);
             this.labelCorrectAnswer.TabIndex = 17;
@@ -353,7 +355,7 @@
             this.labelWrongAnswer.AutoSize = true;
             this.labelWrongAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelWrongAnswer.ForeColor = System.Drawing.Color.Red;
-            this.labelWrongAnswer.Location = new System.Drawing.Point(365, 293);
+            this.labelWrongAnswer.Location = new System.Drawing.Point(364, 222);
             this.labelWrongAnswer.Name = "labelWrongAnswer";
             this.labelWrongAnswer.Size = new System.Drawing.Size(95, 36);
             this.labelWrongAnswer.TabIndex = 18;
@@ -363,7 +365,7 @@
             // 
             this.labelAllQuestion.AutoSize = true;
             this.labelAllQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.labelAllQuestion.Location = new System.Drawing.Point(368, 90);
+            this.labelAllQuestion.Location = new System.Drawing.Point(368, 77);
             this.labelAllQuestion.Name = "labelAllQuestion";
             this.labelAllQuestion.Size = new System.Drawing.Size(95, 36);
             this.labelAllQuestion.TabIndex = 19;
@@ -373,8 +375,8 @@
             // 
             this.lblNotAnswerQuestions.AutoSize = true;
             this.lblNotAnswerQuestions.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblNotAnswerQuestions.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.lblNotAnswerQuestions.Location = new System.Drawing.Point(365, 390);
+            this.lblNotAnswerQuestions.ForeColor = System.Drawing.Color.Sienna;
+            this.lblNotAnswerQuestions.Location = new System.Drawing.Point(364, 300);
             this.lblNotAnswerQuestions.Name = "lblNotAnswerQuestions";
             this.lblNotAnswerQuestions.Size = new System.Drawing.Size(95, 36);
             this.lblNotAnswerQuestions.TabIndex = 20;
@@ -382,6 +384,8 @@
             // 
             // groupBoxScore
             // 
+            this.groupBoxScore.Controls.Add(this.labelScore);
+            this.groupBoxScore.Controls.Add(this.labelScored);
             this.groupBoxScore.Controls.Add(this.label4);
             this.groupBoxScore.Controls.Add(this.label3);
             this.groupBoxScore.Controls.Add(this.label2);
@@ -391,18 +395,40 @@
             this.groupBoxScore.Controls.Add(this.labelCorrectAnswer);
             this.groupBoxScore.Controls.Add(this.labelWrongAnswer);
             this.groupBoxScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBoxScore.Location = new System.Drawing.Point(413, 180);
+            this.groupBoxScore.Location = new System.Drawing.Point(413, 160);
             this.groupBoxScore.Name = "groupBoxScore";
-            this.groupBoxScore.Size = new System.Drawing.Size(562, 444);
+            this.groupBoxScore.Size = new System.Drawing.Size(562, 464);
             this.groupBoxScore.TabIndex = 21;
             this.groupBoxScore.TabStop = false;
             this.groupBoxScore.Text = "Scores";
+            // 
+            // labelScore
+            // 
+            this.labelScore.AutoSize = true;
+            this.labelScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelScore.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelScore.Location = new System.Drawing.Point(17, 397);
+            this.labelScore.Name = "labelScore";
+            this.labelScore.Size = new System.Drawing.Size(251, 40);
+            this.labelScore.TabIndex = 26;
+            this.labelScore.Text = "Score             :";
+            // 
+            // labelScored
+            // 
+            this.labelScored.AutoSize = true;
+            this.labelScored.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelScored.ForeColor = System.Drawing.Color.Black;
+            this.labelScored.Location = new System.Drawing.Point(364, 397);
+            this.labelScored.Name = "labelScored";
+            this.labelScored.Size = new System.Drawing.Size(113, 40);
+            this.labelScored.TabIndex = 25;
+            this.labelScored.Text = "label1";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label4.Location = new System.Drawing.Point(18, 390);
+            this.label4.Location = new System.Drawing.Point(17, 300);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(249, 32);
             this.label4.TabIndex = 24;
@@ -412,7 +438,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(18, 291);
+            this.label3.Location = new System.Drawing.Point(17, 220);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(249, 32);
             this.label3.TabIndex = 23;
@@ -422,7 +448,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(18, 185);
+            this.label2.Location = new System.Drawing.Point(18, 146);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(251, 32);
             this.label2.TabIndex = 22;
@@ -432,7 +458,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(18, 90);
+            this.label1.Location = new System.Drawing.Point(18, 77);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(248, 32);
             this.label1.TabIndex = 21;
@@ -520,5 +546,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelCongurulate;
+        private System.Windows.Forms.Label labelScore;
+        private System.Windows.Forms.Label labelScored;
     }
 }

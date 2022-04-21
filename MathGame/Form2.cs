@@ -26,6 +26,7 @@ namespace MathGame
         int wrongAnswer = 0;
         int allQuestions = 0;
         int notAnsweredQuestions = 0;
+        int point =0;
         bool startStop = true;
         Random number = new Random();
         
@@ -334,12 +335,36 @@ namespace MathGame
             if (buttonText == 0)
             {
                 buttonAnswerLeft.Text = Convert.ToString(result);
-                buttonAnswerRight.Text = Convert.ToString(wrongAnswer);
+                if (result==wrongAnswer)
+                {
+                    buttonAnswerRight.Text = Convert.ToString(wrongAnswer + 2);
+                }
+                else if (wrongAnswer<0)
+                {
+                    buttonAnswerRight.Text = Convert.ToString(wrongAnswer + 6);
+                }
+                else
+                {
+                    buttonAnswerRight.Text = Convert.ToString(wrongAnswer);
+                }
+                
+
             }
             else
             {
-                buttonAnswerLeft.Text = Convert.ToString(wrongAnswer);
                 buttonAnswerRight.Text = Convert.ToString(result);
+                if (result == wrongAnswer)
+                {
+                    buttonAnswerLeft.Text = Convert.ToString(wrongAnswer + 2);
+                }
+                else if (wrongAnswer < 0)
+                {
+                    buttonAnswerLeft.Text = Convert.ToString(wrongAnswer + 6);
+                }
+                else
+                {
+                    buttonAnswerLeft.Text = Convert.ToString(wrongAnswer);
+                }               
             }
         }
 
@@ -354,6 +379,13 @@ namespace MathGame
             wrongAnswer++;
             labelWrongAnswer.Text = Convert.ToString(wrongAnswer);
         }
+
+        private void pointAccounting()
+        {
+            point = (correctAnswer * 20) - (wrongAnswer * 20) - (notAnsweredQuestions * 5);
+            labelScored.Text = point.ToString();
+        }
+
 
         private void allAnswer()
         {
@@ -494,6 +526,7 @@ namespace MathGame
                 labelCorrectAnswer.Text = Convert.ToString(correctAnswer);
                 labelWrongAnswer.Text = Convert.ToString(wrongAnswer);
                 lblNotAnswerQuestions.Text = Convert.ToString(notAnsweredQuestions);
+                pointAccounting();
                 timerGameTime.Stop();
                 timerQuestionTime.Stop();
                 timerAnswerTime.Stop();
@@ -562,5 +595,6 @@ namespace MathGame
             timerAnswerTime.Start();
             secondAnswering = 2;
         }
+
     }
 }
