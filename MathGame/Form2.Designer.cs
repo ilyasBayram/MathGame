@@ -54,7 +54,7 @@
             this.labelQuestionSecond = new System.Windows.Forms.Label();
             this.timerGameTime = new System.Windows.Forms.Timer(this.components);
             this.timerQuestionTime = new System.Windows.Forms.Timer(this.components);
-            this.answerTime = new System.Windows.Forms.Timer(this.components);
+            this.timerAnswerTime = new System.Windows.Forms.Timer(this.components);
             this.labelCorrectAnswer = new System.Windows.Forms.Label();
             this.labelWrongAnswer = new System.Windows.Forms.Label();
             this.labelAllQuestion = new System.Windows.Forms.Label();
@@ -333,9 +333,9 @@
             this.timerQuestionTime.Interval = 1000;
             this.timerQuestionTime.Tick += new System.EventHandler(this.timerQuestionTime_Tick);
             // 
-            // answerTime
+            // timerAnswerTime
             // 
-            this.answerTime.Tick += new System.EventHandler(this.answerTime_Tick);
+            this.timerAnswerTime.Tick += new System.EventHandler(this.timerAnswerTime_Tick);
             // 
             // labelCorrectAnswer
             // 
@@ -373,6 +373,7 @@
             // 
             this.lblNotAnswerQuestions.AutoSize = true;
             this.lblNotAnswerQuestions.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblNotAnswerQuestions.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.lblNotAnswerQuestions.Location = new System.Drawing.Point(365, 390);
             this.lblNotAnswerQuestions.Name = "lblNotAnswerQuestions";
             this.lblNotAnswerQuestions.Size = new System.Drawing.Size(95, 36);
@@ -508,7 +509,7 @@
         private System.Windows.Forms.Label labelQuestionSecond;
         private System.Windows.Forms.Timer timerGameTime;
         private System.Windows.Forms.Timer timerQuestionTime;
-        private System.Windows.Forms.Timer answerTime;
+        private System.Windows.Forms.Timer timerAnswerTime;
         private System.Windows.Forms.Label labelCorrectAnswer;
         private System.Windows.Forms.Label labelWrongAnswer;
         private System.Windows.Forms.Label labelAllQuestion;

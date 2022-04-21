@@ -36,8 +36,9 @@ namespace MathGame
             int result = 0;
             int smallNumberOne = number.Next(1, 10);
             int smallNumberTwo = number.Next(1, 10);
-            int bigNumberOne = number.Next(10, 15);
-            int bigNumberTwo = number.Next(10, 15);
+            int bigNumberOne = number.Next(10, 20);
+            int bigNumberTwo = number.Next(10, 20);
+            int hardNumber = number.Next(30, 99);
             string[] signs = { "+", "-", "X"};
             int signAllNumbers = number.Next(0, 3);
             int signFirstTwo = number.Next(0, 2);
@@ -188,17 +189,8 @@ namespace MathGame
                 }
                 else if (comboOperation.Text == "Only abstraction")
                 { 
-                    if (bigNumberTwo > bigNumberOne)
-                    {
-                        labelQuestion.Text = bigNumberTwo + " " + "-" + " " + bigNumberOne;
-
-                        result = bigNumberTwo - bigNumberOne;
-                    }
-                    else
-                    {
-                        labelQuestion.Text = bigNumberOne + " " + "-" + " " + bigNumberTwo;
-                        result = bigNumberOne - bigNumberTwo;
-                    }
+                     labelQuestion.Text = hardNumber + " " + "-" + " " + bigNumberOne;
+                     result = hardNumber - bigNumberOne;  
                 }
                
                 else if (comboOperation.Text == "Only multiplication")
@@ -211,22 +203,13 @@ namespace MathGame
                     
                     if (lastSignFirstTwo == "+")
                     {
-                        labelQuestion.Text = bigNumberOne + " " + "+" + " " + bigNumberTwo;
-                        result = bigNumberOne + bigNumberTwo;
+                        labelQuestion.Text = bigNumberOne + " " + "+" + " " + hardNumber;
+                        result = bigNumberOne + hardNumber;
                     }
                     if (lastSignFirstTwo == "-")
                     {
-                        if (bigNumberTwo > bigNumberOne)
-                        {
-                            labelQuestion.Text = bigNumberTwo + " " + "-" + " " + bigNumberOne;
-
-                            result = bigNumberTwo - bigNumberOne;
-                        }
-                        else
-                        {
-                            labelQuestion.Text = bigNumberOne + " " + "-" + " " + bigNumberTwo;
-                            result = bigNumberOne - bigNumberTwo;
-                        }
+                        labelQuestion.Text = hardNumber + " " + "-" + " " + bigNumberOne;
+                        result = hardNumber - bigNumberOne;
                     }
                 }
                 else if (comboOperation.Text == "All")
@@ -239,17 +222,8 @@ namespace MathGame
                     }
                     if (lastSignAll == "-")
                     {
-                        if (bigNumberTwo > bigNumberOne)
-                        {
-                            labelQuestion.Text = bigNumberTwo + " " + "-" + " " + bigNumberOne;
-
-                            result = bigNumberTwo - bigNumberOne;
-                        }
-                        else
-                        {
-                            labelQuestion.Text = bigNumberOne + " " + "-" + " " + bigNumberTwo;
-                            result = bigNumberOne - bigNumberTwo;
-                        }
+                        labelQuestion.Text = hardNumber + " " + "-" + " " + bigNumberOne;
+                        result = hardNumber - bigNumberOne;
                     }
                     if (lastSignAll == "X")
                     {
@@ -522,7 +496,7 @@ namespace MathGame
                 lblNotAnswerQuestions.Text = Convert.ToString(notAnsweredQuestions);
                 timerGameTime.Stop();
                 timerQuestionTime.Stop();
-                answerTime.Stop();
+                timerAnswerTime.Stop();
             }
 
         }
@@ -541,7 +515,7 @@ namespace MathGame
                        
         }
 
-        private void answerTime_Tick(object sender, EventArgs e)
+        private void timerAnswerTime_Tick(object sender, EventArgs e)
         {
             secondAnswering -= 1;
             if (secondAnswering == 1)
@@ -566,7 +540,7 @@ namespace MathGame
                 buttonAnswerLeft.BackColor = Color.Red;
                 wrongAnswerLabel();
             }
-            answerTime.Start();
+            timerAnswerTime.Start();
             secondAnswering = 2;
             
         }
@@ -585,7 +559,7 @@ namespace MathGame
                 buttonAnswerRight.BackColor = Color.Red;
                 wrongAnswerLabel();
             }
-            answerTime.Start();
+            timerAnswerTime.Start();
             secondAnswering = 2;
         }
     }
