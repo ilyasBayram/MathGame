@@ -23,5 +23,12 @@ namespace MathGame
             string text = System.IO.File.ReadAllText(filesource);
             textBox1.Text = text;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form1 Form1 = new Form1();
+            Form1.Show();
+            this.Hide();
+        }
     }
 }

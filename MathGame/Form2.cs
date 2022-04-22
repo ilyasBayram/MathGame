@@ -10,9 +10,9 @@ namespace MathGame
         {
             InitializeComponent();
         }
-        
-        
-        
+
+
+
         int result = 0;
         int secondStart = 4;
         int secondGameOneMinute = 61;
