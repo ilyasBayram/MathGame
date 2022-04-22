@@ -1,0 +1,39 @@
+The aim of the game is to asnwer the questions correctly anf gets hihger score during game time.
+
+In game there are four features. 
+
+Game Type
+-------------
+
+You can choose operation type. If you choose onyl addition question will be only additon. 
+
+Level
+-------------
+You can choose game difficulty level. 
+
+Esay  : Only one digit numbers appear.
+
+Medium: One of the number will be one digit the other will be two digits between 10-20.
+
+Hard  : Numbers will be two digits. One of them is between 10-20 and the other is 30-99.
+
+Game speed
+--------------
+You can identify when the next question will be appear. For instance if you choose 5 in every 5 second 
+questios will renewed.
+
+Game time
+--------------
+You can choose 30 seconds or 1 minute. It represent when the game will end.
+
+Score
+--------------
+Every correct answer is 20 point.
+Every wrong answer reduces 10 point.
+Every not answered  question reduces 5 point.
+
+Score panel
+--------------
+It shows number of all questions you encountered during game, number of correct answers, 
+
+number of wrong aswer, number of not answered questions and game score.
