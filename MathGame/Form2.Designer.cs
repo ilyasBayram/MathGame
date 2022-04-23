@@ -205,8 +205,8 @@
             this.comboTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.comboTime.FormattingEnabled = true;
             this.comboTime.Items.AddRange(new object[] {
-            "1 Minutes",
-            "2 Minutes"});
+            "60",
+            "30"});
             this.comboTime.Location = new System.Drawing.Point(38, 484);
             this.comboTime.Name = "comboTime";
             this.comboTime.Size = new System.Drawing.Size(267, 33);

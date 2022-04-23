@@ -15,8 +15,8 @@ namespace MathGame
 
         int result = 0;
         int secondStart = 4;
-        int secondGameOneMinute = 61;
-        int minuteGameTwoMinute = 1;
+        int secondGameOneMinute = 60;
+        int secondGameThirtySeconds;
         int secondQuestion;
         double secondAnswering = 2;
         int correctAnswer = 0;
@@ -406,10 +406,12 @@ namespace MathGame
             comboOperation.SelectedIndex = 0;
             comboLevel.SelectedIndex = 0;
             comboSpeed.Text = "6";
-            comboTime.SelectedIndex = 0;
+            comboTime.Text = "60";
             objectsVisibleFalse();
             lastObjectsVisibleFalse();
             secondQuestion = Convert.ToInt32(comboSpeed.Text);
+            secondGameThirtySeconds = Convert.ToInt32(comboTime.Text);
+
         }
 
         private void comboOperation_SelectedIndexChanged(object sender, EventArgs e)
@@ -441,12 +443,12 @@ namespace MathGame
             {
                 buttonStart.Text = "Stop";
                 timerStart.Start();
-                startStop = false;
-                labelGameSecond.Text = "59";
-                labelQuestionSecond.Text = comboSpeed.Text;
                 secondQuestion = Convert.ToInt32(comboSpeed.Text);
+                secondGameThirtySeconds = Convert.ToInt32(comboTime.Text);
+                labelQuestionSecond.Text = comboSpeed.Text;
+                labelGameSecond.Text = comboTime.Text;
                 comboBoxEnabledFalse();
-
+                startStop = false;
             }
             else
             {
@@ -455,7 +457,6 @@ namespace MathGame
                 timerStart.Stop();
                 timerGameTime.Stop();
                 timerQuestionTime.Stop();
-                secondGameOneMinute = 60;
                 secondStart = 4;
                 comboBoxEnabledTrue();
                 labelStartTime.Visible = false;
@@ -499,24 +500,17 @@ namespace MathGame
 
         private void timerGameTime_Tick_1(object sender, EventArgs e)
         {
-            if (comboTime.Text == "1 Minutes")
+            if (comboTime.Text == "60")
             {
                 secondGameOneMinute -= 1;
                 labelGameSecond.Text = secondGameOneMinute.ToString();
             }
-            if (comboTime.Text == "2 Minutes")
+            if (comboTime.Text == "30")
             {
-                labelGameMinute.Text = minuteGameTwoMinute.ToString();
-                secondGameOneMinute -= 1;
-                labelGameSecond.Text = secondGameOneMinute.ToString();
-                if (secondGameOneMinute == 1)
-                {
-                    minuteGameTwoMinute--;
-                    labelGameMinute.Text = minuteGameTwoMinute.ToString();
-                    secondGameOneMinute = 59;
-                }
+                secondGameThirtySeconds -= 1;
+                labelGameSecond.Text = secondGameThirtySeconds.ToString();
             }
-            if (secondGameOneMinute == 0)
+            if (labelGameSecond.Text == Convert.ToString(0))
             {
                 lastObjectsVisibleTrue();
                 objectsVisibleFalse();
