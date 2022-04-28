@@ -444,7 +444,7 @@ namespace MathGame
                 buttonStart.Text = "Stop";
                 timerStart.Start();
                 secondQuestion = Convert.ToInt32(comboSpeed.Text);
-                secondGameThirtySeconds = Convert.ToInt32(comboTime.Text);
+                secondGameThirtySeconds = Convert.ToInt32(comboTime.Text);               
                 labelQuestionSecond.Text = comboSpeed.Text;
                 labelGameSecond.Text = comboTime.Text;
                 comboBoxEnabledFalse();
@@ -458,6 +458,7 @@ namespace MathGame
                 timerGameTime.Stop();
                 timerQuestionTime.Stop();
                 secondStart = 4;
+                secondGameOneMinute = 60;
                 comboBoxEnabledTrue();
                 labelStartTime.Visible = false;
                 objectsVisibleFalse();
