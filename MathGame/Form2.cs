@@ -12,7 +12,7 @@ namespace MathGame
         }
 
 
-
+        #region variables
         int result = 0;
         int secondStart = 4;
         int secondGameOneMinute = 60;
@@ -26,16 +26,16 @@ namespace MathGame
         int point = 0;
         bool startStop = true;
         Random number = new Random();
+        #endregion
 
-
-
+        #region methods
         public int createOperation()
         {
             int result = 0;
             int smallNumberOne = number.Next(1, 10);
             int smallNumberTwo = number.Next(1, 10);
-            int bigNumberOne = number.Next(10, 20);
-            int bigNumberTwo = number.Next(10, 20);
+            int bigNumberOne = number.Next(10, 25);
+            int bigNumberTwo = number.Next(10, 25);
             int hardNumber = number.Next(30, 99);
             string[] signs = { "+", "-", "X" };
             int signAllNumbers = number.Next(0, 3);
@@ -400,7 +400,9 @@ namespace MathGame
             buttonAnswerLeft.BackColor = Color.Azure;
             buttonAnswerRight.BackColor = Color.Azure;
         }
+        #endregion
 
+        #region formload
         private void Form2_Load(object sender, EventArgs e)
         {
             comboOperation.SelectedIndex = 0;
@@ -413,7 +415,9 @@ namespace MathGame
             secondGameThirtySeconds = Convert.ToInt32(comboTime.Text);
 
         }
+        #endregion
 
+        #region combotip
         private void comboOperation_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBoxTip();
@@ -433,7 +437,9 @@ namespace MathGame
         {
             comboBoxTip();
         }
+        #endregion
 
+        #region buttons
         private void buttonStart_Click(object sender, EventArgs e)
         {
             buttonActiveControl();
@@ -468,6 +474,45 @@ namespace MathGame
 
         }
 
+        private void buttonAnswerLeft_Click(object sender, EventArgs e)
+        {
+            allAnswer();
+
+            if (buttonAnswerLeft.Text == Convert.ToString(result))
+            {
+                buttonAnswerLeft.BackColor = Color.Green;
+                correctAnswerLabel();
+            }
+            else
+            {
+                buttonAnswerLeft.BackColor = Color.Red;
+                wrongAnswerLabel();
+            }
+            timerAnswerTime.Start();
+            secondAnswering = 2;
+
+        }
+
+        private void buttonAnswerRight_Click(object sender, EventArgs e)
+        {
+            allAnswer();
+
+            if (buttonAnswerRight.Text == Convert.ToString(result))
+            {
+                buttonAnswerRight.BackColor = Color.Green;
+                correctAnswerLabel();
+            }
+            else
+            {
+                buttonAnswerRight.BackColor = Color.Red;
+                wrongAnswerLabel();
+            }
+            timerAnswerTime.Start();
+            secondAnswering = 2;
+        }
+        #endregion
+
+        #region timers
         private void timerStart_Tick(object sender, EventArgs e)
         {
             labelStartTime.Visible = true;
@@ -550,43 +595,6 @@ namespace MathGame
                 secondQuestion = Convert.ToInt32(comboSpeed.Text) + 1;
             }
         }
-
-        private void buttonAnswerLeft_Click(object sender, EventArgs e)
-        {
-            allAnswer();
-
-            if (buttonAnswerLeft.Text == Convert.ToString(result))
-            {
-                buttonAnswerLeft.BackColor = Color.Green;
-                correctAnswerLabel();
-            }
-            else
-            {
-                buttonAnswerLeft.BackColor = Color.Red;
-                wrongAnswerLabel();
-            }
-            timerAnswerTime.Start();
-            secondAnswering = 2;
-
-        }
-
-        private void buttonAnswerRight_Click(object sender, EventArgs e)
-        {
-            allAnswer();
-
-            if (buttonAnswerRight.Text == Convert.ToString(result))
-            {
-                buttonAnswerRight.BackColor = Color.Green;
-                correctAnswerLabel();
-            }
-            else
-            {
-                buttonAnswerRight.BackColor = Color.Red;
-                wrongAnswerLabel();
-            }
-            timerAnswerTime.Start();
-            secondAnswering = 2;
-        }
-
+        #endregion
     }
 }
